@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://m6gqbdchwjhb"]
+
+[ext_resource type="Texture2D" uid="uid://d1nswf2neid71" path="res://assets/Floors.png" id="1_fw4w5"]
+[ext_resource type="PackedScene" uid="uid://4hy5nd56g0rb" path="res://arbol.tscn" id="2_otwa2"]
+[ext_resource type="PackedScene" uid="uid://gut1e6vhxams" path="res://mono.tscn" id="3_aou4a"]
+[ext_resource type="PackedScene" uid="uid://cskbmrl81cm1v" path="res://mago.tscn" id="4_otwa2"]
+[ext_resource type="PackedScene" uid="uid://qmrlw4bgytx0" path="res://caballero.tscn" id="5_aou4a"]
+
+[node name="Mundo" type="Node2D"]
+y_sort_enabled = true
+
+[node name="Floors" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(571.75, 422.5)
+scale = Vector2(24.0106, 17.9787)
+texture = ExtResource("1_fw4w5")
+region_enabled = true
+region_rect = Rect2(0.407276, 0.658357, 47.4431, 47.6608)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(30, -81)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D2" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(438, 505)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D3" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(280, 82)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D4" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(779, 353)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D5" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(67, 279)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D6" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(935, 53)
+scale = Vector2(2, 2)
+
+[node name="StaticBody2D7" parent="." instance=ExtResource("2_otwa2")]
+position = Vector2(220, 529)
+scale = Vector2(2, 2)
+
+[node name="Mono" parent="." instance=ExtResource("3_aou4a")]
+position = Vector2(238, 209)
+
+[node name="Mago" parent="." instance=ExtResource("4_otwa2")]
+position = Vector2(234, 145)
+
+[node name="Mago2" parent="." instance=ExtResource("5_aou4a")]
+position = Vector2(565, -84)

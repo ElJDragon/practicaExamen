@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cskbmrl81cm1v"]
+
+[ext_resource type="Texture2D" uid="uid://c8a517md8jqh8" path="res://assets/Idle-Sheet2.png" id="1_0bxaq"]
+[ext_resource type="Script" uid="uid://cfx8i6actxw5e" path="res://mago.gd" id="1_awaw6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_awaw6"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0bxaq"]
+radius = 34.0023
+
+[node name="Mago" type="CharacterBody2D"]
+scale = Vector2(2.5, 2.5)
+script = ExtResource("1_awaw6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(87, 75)
+texture = ExtResource("1_0bxaq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(87, 76)
+shape = SubResource("CircleShape2D_awaw6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(87.2, 75.6)
+shape = SubResource("CircleShape2D_0bxaq")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.8
+offset_top = 27.6
+offset_right = 195.2
+offset_bottom = 50.6
+text = "Presiona E para interactuar"
