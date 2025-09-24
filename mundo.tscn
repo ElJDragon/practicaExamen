@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://m6gqbdchwjhb"]
+[gd_scene load_steps=8 format=3 uid="uid://m6gqbdchwjhb"]
 
 [ext_resource type="Texture2D" uid="uid://d1nswf2neid71" path="res://assets/Floors.png" id="1_fw4w5"]
 [ext_resource type="PackedScene" uid="uid://4hy5nd56g0rb" path="res://arbol.tscn" id="2_otwa2"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cskbmrl81cm1v" path="res://mago.tscn" id="4_otwa2"]
 [ext_resource type="PackedScene" uid="uid://qmrlw4bgytx0" path="res://caballero.tscn" id="5_aou4a"]
 [ext_resource type="Texture2D" uid="uid://bqnjcrftkcfnk" path="res://assets/AgoraBetapxo.png" id="6_5ckkb"]
+[ext_resource type="AudioStream" uid="uid://dfqj22lthf7ev" path="res://assets/Intro.ogg" id="7_2hh7m"]
 
 [node name="Mundo" type="Node2D"]
 y_sort_enabled = true
@@ -84,3 +85,8 @@ polygon = PackedVector2Array(0, 1048, 496, 1048, 496, 1160, 568, 1160, 576, 1440
 [node name="LimiteAscensorCP" type="CollisionPolygon2D" parent="limitesSB"]
 build_mode = 1
 polygon = PackedVector2Array(984, 640, 1144, 640, 1144, 424, 1128, 424, 1128, 440, 1000, 440, 1000, 424, 984, 424)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_2hh7m")
+autoplay = true
+parameters/looping = true
