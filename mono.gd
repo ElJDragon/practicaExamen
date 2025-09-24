@@ -2,15 +2,35 @@ extends CharacterBody2D
 
 var can_move = true
 
-func _ready() -> void: 
+func _ready() -> void:
 	name = "Mono"
 	print("=== MONO INICIALIZADO ===")
 	print("Nombre del nodo: ", name)
-	$animaciones.play("XD")
-	print("Posicion Mono:", Global.posicion_mono)
+	
+	# Crear un Node2D padre para controlar el pivot
+	var pivot_parent = Node2D.new()
+	pivot_parent.name = "PivotParent"
+	
+	# Mover este nodo a la posición deseada antes de agregar hijos
 	if Global.posicion_mono != Vector2.ZERO:
 		print("Posicion Mono actualizada:", Global.posicion_mono)
 		global_position = Global.posicion_mono
+	
+	# Configurar el offset del pivot (ejemplo: pivot en los pies)
+	var pivot_offset = Vector2(0, -40)  # Ajusta estos valores
+	
+	# Agregar el pivot parent como hijo de este nodo
+	add_child(pivot_parent)
+	pivot_parent.position = pivot_offset
+	
+	# Mover las animaciones y sprites al pivot parent
+	var animaciones_node = $animaciones
+	remove_child(animaciones_node)
+	pivot_parent.add_child(animaciones_node)
+	animaciones_node.owner = pivot_parent
+	
+	# Reproducir animación
+	animaciones_node.play("XD")
 		
 func _physics_process(delta):
 	if not can_move:
