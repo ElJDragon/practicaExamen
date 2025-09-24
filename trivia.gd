@@ -1,372 +1,110 @@
 extends Control
 
-var preguntas = [
-	{
-		"pregunta": "¿Qué hace un ingeniero de software?",
-		"respuestas": [
-			"Desarrolla programas y aplicaciones",
-			"Construye puentes",
-			"Opera maquinaria pesada",
-			"Vende productos en una tienda"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Cuál de estos lenguajes se usa para programar?",
-		"respuestas": [
-			"Español",
-			"Python",
-			"Latín",
-			"Francés"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Qué dispositivo es esencial para programar?",
-		"respuestas": [
-			"Refrigeradora",
-			"Televisor",
-			"Computadora",
-			"Microondas"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Qué es una aplicación móvil?",
-		"respuestas": [
-			"Un libro de papel",
-			"Una bicicleta",
-			"Un tipo de comida",
-			"Un programa que funciona en celulares"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Para qué sirve Internet en la ingeniería de software?",
-		"respuestas": [
-			"Para cocinar",
-			"Para buscar información y colaborar",
-			"Para pintar paredes",
-			"Para hacer ejercicio físico"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Qué es un videojuego?",
-		"respuestas": [
-			"Un deporte tradicional",
-			"Un instrumento musical",
-			"Un programa interactivo para entretener",
-			"Una receta de cocina"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Qué habilidad es importante para un ingeniero de software?",
-		"respuestas": [
-			"Saltar muy alto",
-			"Cantar ópera",
-			"Conducir camiones",
-			"Resolver problemas"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Qué puedes crear estudiando ingeniería de software?",
-		"respuestas": [
-			"Zapatos",
-			"Apps, videojuegos y páginas web",
-			"Comida rápida",
-			"Ropa de moda"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Qué es la inteligencia artificial?",
-		"respuestas": [
-			"Un tipo de deporte",
-			"Un animal exótico",
-			"Programas que aprenden y resuelven tareas",
-			"Un estilo de baile"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Por qué es importante la tecnología en la vida diaria?",
-		"respuestas": [
-			"Sirve solo para jugar",
-			"No tiene utilidad",
-			"Es solo para adultos",
-			"Facilita comunicación y acceso a información"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Qué redes sociales usan programación para funcionar?",
-		"respuestas": [
-			"Solo los periódicos",
-			"Instagram, TikTok y WhatsApp",
-			"Únicamente la radio",
-			"Solo las cartas escritas"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Cuánto puede ganar un ingeniero de software?",
-		"respuestas": [
-			"Muy poco dinero",
-			"Solo trabajos gratis",
-			"Salarios muy competitivos y altos",
-			"No hay oportunidades laborales"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Qué empresas famosas fueron creadas por ingenieros de software?",
-		"respuestas": [
-			"McDonalds y Burger King",
-			"Solo tiendas de ropa",
-			"Solo bancos tradicionales",
-			"Google, Facebook, Microsoft y Apple"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Desde qué edad se puede empezar a programar?",
-		"respuestas": [
-			"Desde la adolescencia, ¡incluso ahora!",
-			"Solo después de los 40 años",
-			"Únicamente en la universidad",
-			"Solo si tienes un título de matemáticas"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Qué aplicaciones usan los jóvenes que fueron creadas por programadores?",
-		"respuestas": [
-			"Solo calculadoras básicas",
-			"Spotify, Netflix, YouTube y Zoom",
-			"Únicamente procesadores de texto",
-			"Solo programas de contabilidad"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Puedes trabajar como ingeniero de software desde casa?",
-		"respuestas": [
-			"No, siempre en oficina",
-			"Solo los fines de semana",
-			"Sí, es una profesión muy flexible",
-			"Solo durante vacaciones"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Qué problemas del mundo real puede resolver un ingeniero de software?",
-		"respuestas": [
-			"Solo arreglar electrodomésticos",
-			"Solo pintar casas",
-			"Solo reparar automóviles",
-			"Apps para salud, educación y medio ambiente"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Cómo funciona una plataforma de delivery como Uber Eats?",
-		"respuestas": [
-			"Solo por teléfono fijo",
-			"Apps programadas que conectan clientes",
-			"Solo con cartas escritas",
-			"Solo visitando restaurantes"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Qué necesitas para crear tu propia startup tecnológica?",
-		"respuestas": [
-			"Solo mucho dinero",
-			"Solo contactos familiares",
-			"Ideas innovadoras y saber programar",
-			"Solo suerte"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Qué tienen en común Mark Zuckerberg, Bill Gates y Steve Jobs?",
-		"respuestas": [
-			"Todos fueron atletas profesionales",
-			"Solo trabajaron en restaurantes",
-			"Solo estudiaron medicina",
-			"Estudiaron programación y crearon empresas tech"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Qué es un desarrollador web?",
-		"respuestas": [
-			"Crea páginas web y sitios de internet",
-			"Vende páginas de libros",
-			"Limpia computadoras",
-			"Entrega periódicos"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Qué es el comercio electrónico (e-commerce)?",
-		"respuestas": [
-			"Solo vender en tiendas físicas",
-			"Vender productos online con sitios web",
-			"Solo intercambiar productos",
-			"Solo vender con efectivo"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Qué es un algoritmo en programación?",
-		"respuestas": [
-			"Un tipo de computadora",
-			"Un lenguaje extranjero",
-			"Una secuencia de pasos para resolver un problema",
-			"Un instrumento musical"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Por qué las empresas necesitan programadores?",
-		"respuestas": [
-			"Solo para usar calculadoras",
-			"Solo para escribir cartas",
-			"Solo para organizar archivos",
-			"Para automatizar procesos y crear soluciones"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Qué es la ciberseguridad?",
-		"respuestas": [
-			"Proteger sistemas y datos de ataques digitales",
-			"Solo usar candados físicos",
-			"Únicamente vigilar edificios",
-			"Solo instalar cámaras de seguridad"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Cómo ayuda la programación en la medicina moderna?",
-		"respuestas": [
-			"Solo fabricando medicamentos",
-			"Sistemas para hospitales y análisis médico",
-			"Solo limpiando hospitales",
-			"Solo transportando pacientes"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Qué es la computación en la nube (cloud computing)?",
-		"respuestas": [
-			"Solo usar computadoras blancas",
-			"Solo trabajar en días nublados",
-			"Almacenar y procesar datos en servidores remotos",
-			"Solo usar papel"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Cuál es el futuro de la ingeniería de software?",
-		"respuestas": [
-			"Va a desaparecer pronto",
-			"Solo para muy pocas personas",
-			"No tendrá importancia",
-			"Cada vez más demandada con nuevas tecnologías"
-		],
-		"correcta": 3
-	},
-	{
-		"pregunta": "¿Qué es un desarrollador de aplicaciones móviles?",
-		"respuestas": [
-			"Repara teléfonos",
-			"Crea apps para celulares y tablets",
-			"Vende celulares",
-			"Limpia pantallas"
-		],
-		"correcta": 1
-	},
-	{
-		"pregunta": "¿Cómo impacta la tecnología en la educación?",
-		"respuestas": [
-			"Solo sirve para jugar",
-			"No tiene ningún impacto",
-			"Permite aprender online y acceder a recursos",
-			"Solo complica el aprendizaje"
-		],
-		"correcta": 2
-	},
-	{
-		"pregunta": "¿Qué es un programador de videojuegos?",
-		"respuestas": [
-			"Crea la lógica y mecánicas de los juegos",
-			"Solo juega videojuegos",
-			"Vende consolas",
-			"Limpia computadoras"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Por qué es emocionante estudiar ingeniería de software?",
-		"respuestas": [
-			"Puedes crear tecnología que cambie el mundo",
-			"Solo es trabajo de oficina aburrido",
-			"No tiene ninguna creatividad",
-			"Solo sirve para trabajos repetitivos"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Qué es la programación en el desarrollo de robots?",
-		"respuestas": [
-			"Dar instrucciones al robot para hacer tareas",
-			"Solo ensamblar piezas mecánicas",
-			"Solo pintar robots",
-			"Solo mover robots manualmente"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Qué oportunidades laborales hay en tecnología?",
-		"respuestas": [
-			"Desarrollador, analista, arquitecto y muchas más",
-			"Solo trabajos de limpieza",
-			"Solo trabajos de ventas",
-			"Solo trabajos de construcción"
-		],
-		"correcta": 0
-	},
-	{
-		"pregunta": "¿Cómo pueden los jóvenes empezar a aprender programación?",
-		"respuestas": [
-			"Con cursos online gratuitos y apps educativas",
-			"Solo en universidades caras",
-			"Solo con libros muy antiguos",
-			"Solo con conexiones familiares"
-		],
-		"correcta": 0
-	}
+# Preguntas por categoría
+var preguntas_cultura = [
+	{"pregunta":"¿Cuál es la capital de Francia, famosa por la Torre Eiffel?","respuestas":["París","Madrid","Londres","Berlín"],"correcta":0},
+	{"pregunta":"¿Quién escribió 'Don Quijote de la Mancha'?","respuestas":["Miguel de Cervantes","William Shakespeare","Ernest Hemingway","Edgar Allan Poe"],"correcta":0},
+	{"pregunta":"¿En qué país se originó el Renacimiento?","respuestas":["Italia","Francia","España","Alemania"],"correcta":0},
+	{"pregunta":"¿Cuál es la lengua oficial de Brasil?","respuestas":["Portugués","Español","Inglés","Francés"],"correcta":0},
+	{"pregunta":"¿Qué civilización construyó las pirámides de Egipto?","respuestas":["Egipcia","Griega","Romana","Maya"],"correcta":0},
+	{"pregunta":"¿Quién pintó la Mona Lisa?","respuestas":["Leonardo da Vinci","Vincent van Gogh","Pablo Picasso","Claude Monet"],"correcta":0},
+	{"pregunta":"¿Cuál es el río más largo del mundo?","respuestas":["Nilo","Amazonas","Yangtsé","Misisipi"],"correcta":1},
+	{"pregunta":"¿Qué país ganó la Copa Mundial de Fútbol en 2018?","respuestas":["Francia","Brasil","Alemania","Argentina"],"correcta":0},
+	{"pregunta":"¿Quién escribió 'Romeo y Julieta'?","respuestas":["William Shakespeare","Miguel de Cervantes","Mark Twain","Jane Austen"],"correcta":0},
+	{"pregunta":"¿Cuál es la capital de Japón?","respuestas":["Tokio","Beijing","Seúl","Bangkok"],"correcta":0},
+	{"pregunta":"¿Cuál es la obra más famosa de Miguel Ángel?","respuestas":["La Capilla Sixtina","La Última Cena","Guernica","El Grito"],"correcta":0},
+	{"pregunta":"¿Qué país es conocido como la tierra del sol naciente?","respuestas":["Japón","China","India","Corea del Sur"],"correcta":0},
+	{"pregunta":"¿Quién escribió 'Cien años de soledad'?","respuestas":["Gabriel García Márquez","Julio Cortázar","Isabel Allende","Mario Vargas Llosa"],"correcta":0},
+	{"pregunta":"¿Cuál es la moneda oficial del Reino Unido?","respuestas":["Libra esterlina","Euro","Dólar","Franco"],"correcta":0},
+	{"pregunta":"¿Qué ciudad es famosa por el Carnaval y el Cristo Redentor?","respuestas":["Río de Janeiro","Buenos Aires","Santiago","Lisboa"],"correcta":0},
+	{"pregunta":"¿En qué año cayó el Imperio Romano de Occidente?","respuestas":["476 d.C.","1492","1066","395 d.C."],"correcta":0},
+	{"pregunta":"¿Qué filósofo griego fue maestro de Alejandro Magno?","respuestas":["Aristóteles","Platón","Sócrates","Epicuro"],"correcta":0},
+	{"pregunta":"¿Cuál es la capital de Canadá?","respuestas":["Ottawa","Toronto","Montreal","Vancouver"],"correcta":0},
+	{"pregunta":"¿Quién pintó 'La noche estrellada'?","respuestas":["Vincent van Gogh","Pablo Picasso","Leonardo da Vinci","Salvador Dalí"],"correcta":0},
+	{"pregunta":"¿Cuál es el continente más grande del mundo?","respuestas":["Asia","África","América","Europa"],"correcta":0}
 ];
+
+var preguntas_ingenieria = [
+	{"pregunta":"¿Qué hace un ingeniero de software?","respuestas":["Desarrolla programas y aplicaciones","Construye puentes","Opera maquinaria pesada","Vende productos tecnológicos"],"correcta":0},
+	{"pregunta":"¿Cuál de estos lenguajes se utiliza para programar?","respuestas":["Python","Español","Latín","Francés"],"correcta":0},
+	{"pregunta":"¿Qué significa 'HTML'?","respuestas":["HyperText Markup Language","HighText Machine Language","Hyper Transfer Markup Language","Hyperlink Markup Language"],"correcta":0},
+	{"pregunta":"¿Cuál es la principal función de un ingeniero civil?","respuestas":["Diseñar y supervisar construcciones","Desarrollar software","Administrar redes informáticas","Investigar en laboratorios"],"correcta":0},
+	{"pregunta":"¿Qué hace un ingeniero eléctrico?","respuestas":["Diseña sistemas eléctricos y electrónicos","Diseña ropa","Escribe software","Administra bases de datos"],"correcta":0},
+	{"pregunta":"¿Qué es un algoritmo en programación?","respuestas":["Conjunto de pasos para resolver un problema","Un tipo de computadora","Un virus informático","Un lenguaje humano"],"correcta":0},
+	{"pregunta":"¿Qué herramienta se utiliza para versionar código?","respuestas":["Git","Word","Excel","Photoshop"],"correcta":0},
+	{"pregunta":"¿Qué es un circuito eléctrico?","respuestas":["Camino por el que circula la corriente eléctrica","Un programa informático","Un puente de carretera","Un componente mecánico"],"correcta":0},
+	{"pregunta":"¿Qué lenguaje se usa principalmente para desarrollo web frontend?","respuestas":["JavaScript","Python","C++","Java"],"correcta":0},
+	{"pregunta":"¿Cuál es la función de un ingeniero mecánico?","respuestas":["Diseñar y mantener sistemas mecánicos","Programar aplicaciones móviles","Gestionar bases de datos","Supervisar redes eléctricas"],"correcta":0},
+	{"pregunta":"¿Qué es la Inteligencia Artificial?","respuestas":["Simulación de la inteligencia humana en máquinas","Un lenguaje de programación","Un sistema operativo","Una red de computadoras"],"correcta":0},
+	{"pregunta":"¿Qué representa un diagrama de flujo?","respuestas":["El flujo de pasos de un proceso o algoritmo","El plano de un edificio","El diseño de un circuito eléctrico","La jerarquía de una empresa"],"correcta":0},
+	{"pregunta":"¿Qué hace un ingeniero de datos?","respuestas":["Diseña y mantiene sistemas de gestión de datos","Construye puentes","Diseña circuitos eléctricos","Administra la logística de una empresa"],"correcta":0},
+	{"pregunta":"¿Qué significa 'API'?","respuestas":["Application Programming Interface","Applied Program Instruction","Automatic Processing Interface","Active Protocol Integration"],"correcta":0},
+	{"pregunta":"¿Qué es un servidor en informática?","respuestas":["Computadora que proporciona servicios a otras","Un tipo de software antivirus","Un lenguaje de programación","Un procesador"],"correcta":0},
+	{"pregunta":"¿Qué hace un ingeniero en telecomunicaciones?","respuestas":["Diseña y gestiona redes de comunicación","Desarrolla videojuegos","Construye maquinaria","Diseña moda"],"correcta":0},
+	{"pregunta":"¿Qué es el 'backend' en desarrollo web?","respuestas":["La parte del servidor y lógica de la aplicación","El diseño visual de una página web","La red de computadoras","El hardware de un servidor"],"correcta":0},
+	{"pregunta":"¿Cuál es el lenguaje más usado en inteligencia artificial y machine learning?","respuestas":["Python","JavaScript","PHP","HTML"],"correcta":0},
+	{"pregunta":"¿Qué es la nube (cloud computing)?","respuestas":["Almacenamiento y servicios por internet","Un disco duro físico","Un tipo de computadora portátil","Un lenguaje de programación"],"correcta":0},
+	{"pregunta":"¿Qué es GitHub?","respuestas":["Plataforma para alojar y colaborar en proyectos de software","Un sistema operativo","Un lenguaje de programación","Un tipo de base de datos"],"correcta":0}
+];
+
+
 var preguntas_restantes = []
 var pregunta_actual = {}
 var puntaje = 0
+var categoria_seleccionada = ""
 
 func _ready():
-	# Selecciona 5 preguntas aleatorias sin repetir
-	preguntas_restantes = []
-	var preguntas_copia = preguntas.duplicate()
-	for i in range(5):
-		if preguntas_copia.size() == 0:
-			break
-		var pregunta = preguntas_copia.pick_random()
-		preguntas_restantes.append(pregunta)
-		preguntas_copia.erase(pregunta)
+	# Mostrar la selección de categoría
+	$Label.text = "Selecciona categoría"
+	$Boton0.text = "Preguntas de Cultura"
+	$Boton1.text = "Preguntas de Ingeniería"
+	$Boton2.hide()
+	$Boton3.hide()
+	$Mensaje.text = ""
+	$Boton4.text = "Salir"
+
+	# Conectar señales de botones por código
+	$Boton0.connect("pressed", Callable(self, "_on_Boton0_pressed"))
+	$Boton1.connect("pressed", Callable(self, "_on_Boton1_pressed"))
+	$Boton2.connect("pressed", Callable(self, "_on_Boton2_pressed"))
+	$Boton3.connect("pressed", Callable(self, "_on_Boton3_pressed"))
+	$Boton4.connect("pressed", Callable(self, "_on_Boton4_pressed"))
+
+
+
+func _on_Boton0_pressed():
+	print("hola")
+	if categoria_seleccionada == "":
+		print("hola")
+		iniciar_juego("cultura")
+	else:
+		verificar_respuesta(0)
+
+func _on_Boton1_pressed():
+	if categoria_seleccionada == "":
+		iniciar_juego("ingenieria")
+	else:
+		verificar_respuesta(1)
+
+func _on_Boton2_pressed():
+	verificar_respuesta(2)
+
+func _on_Boton3_pressed():
+	verificar_respuesta(3)
+func _on_Boton4_pressed():
+	# Si quieres simplemente cerrar la ventana:
+	get_tree().quit()
+
+func iniciar_juego(categoria):
+	categoria_seleccionada = categoria
+	if categoria == "cultura":
+		preguntas_restantes = preguntas_cultura.duplicate()
+	elif categoria == "ingenieria":
+		preguntas_restantes = preguntas_ingenieria.duplicate()
+
 	puntaje = 0
+	$Boton2.show()
+	$Boton3.show()
 	mostrar_pregunta_aleatoria()
 
 func mostrar_pregunta_aleatoria():
@@ -376,9 +114,12 @@ func mostrar_pregunta_aleatoria():
 	pregunta_actual = preguntas_restantes.pick_random()
 	preguntas_restantes.erase(pregunta_actual)
 	$Label.text = pregunta_actual["pregunta"]
+
 	for i in range(4):
-		get_node("Boton%d" % i).text = pregunta_actual["respuestas"][i]
-		get_node("Boton%d" % i).disabled = false
+		if i < pregunta_actual["respuestas"].size():
+			get_node("Boton%d" % i).text = pregunta_actual["respuestas"][i]
+			get_node("Boton%d" % i).disabled = false
+
 	$Mensaje.text = ""
 
 func verificar_respuesta(indice):
@@ -389,22 +130,14 @@ func verificar_respuesta(indice):
 		$Mensaje.text = "¡Correcto!"
 	else:
 		$Mensaje.text = "Incorrecto"
+
 	await get_tree().create_timer(1.2).timeout
 	mostrar_pregunta_aleatoria()
 
 func mostrar_resultado():
-	$Label.text = "¡Trivia terminada!\nRespuestas correctas: %d de %d" % [puntaje, 5]
-	for i in range(4):
-		get_node("Boton%d" % i).hide()
+	$Label.text = "¡Trivia terminada!\nRespuestas correctas: %d de %d" % [puntaje, puntaje + preguntas_restantes.size()]
+	$Boton0.hide()
+	$Boton1.hide()
+	$Boton2.hide()
+	$Boton3.hide()
 	$Mensaje.text = ""
-	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://mundo.tscn")
-
-func _on_boton_0_pressed() -> void:
-	verificar_respuesta(0)
-func _on_boton_1_pressed() -> void:
-	verificar_respuesta(1)
-func _on_boton_2_pressed() -> void:
-	verificar_respuesta(2)
-func _on_boton_3_pressed() -> void:
-	verificar_respuesta(3)

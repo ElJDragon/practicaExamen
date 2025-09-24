@@ -48,6 +48,14 @@ offset_right = 794.0
 offset_bottom = 623.0
 autowrap_mode = 2
 
+[node name="Boton4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 653.0
+offset_top = 521.0
+offset_right = 794.0
+offset_bottom = 623.0
+autowrap_mode = 2
+
 [node name="Mensaje" type="Label" parent="."]
 layout_mode = 0
 offset_left = 185.0
@@ -59,3 +67,4 @@ offset_bottom = 531.0
 [connection signal="pressed" from="Boton1" to="." method="_on_boton_1_pressed"]
 [connection signal="pressed" from="Boton2" to="." method="_on_boton_2_pressed"]
 [connection signal="pressed" from="Boton3" to="." method="_on_boton_3_pressed"]
+[connection signal="pressed" from="Boton4" to="." method="_on_boton_3_pressed"]
