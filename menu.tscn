@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1wonxbvgaebw"]
+[gd_scene load_steps=10 format=3 uid="uid://c1wonxbvgaebw"]
 
 [ext_resource type="Texture2D" uid="uid://yiyp4odmr37g" path="res://assets/pantalla uta.jpg" id="1_lti8b"]
 [ext_resource type="Script" uid="uid://b3wns4q6uuxbb" path="res://menu.gd" id="1_ouk20"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dy2hi173fpavj" path="res://assets/salir.png" id="4_ytr4m"]
 [ext_resource type="Texture2D" uid="uid://dh6p6f883h0ex" path="res://assets/hoverSalir.png" id="6_ecwwl"]
 [ext_resource type="AudioStream" uid="uid://cmlbdxwrr1iqs" path="res://assets/audiotest1.ogg" id="7_ecwwl"]
+[ext_resource type="AudioStream" uid="uid://hm0t8heqj7w2" path="res://assets/Sk1.mp3" id="8_kk3ma"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ouk20"]
 font_size = 35
@@ -82,6 +83,9 @@ texture_hover = ExtResource("6_ecwwl")
 stream = ExtResource("7_ecwwl")
 autoplay = true
 parameters/looping = false
+
+[node name="AudioClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_kk3ma")
 
 [connection signal="pressed" from="Iniciar" to="." method="_on_iniciar_pressed"]
 [connection signal="pressed" from="Salir" to="." method="_on_salir_pressed"]

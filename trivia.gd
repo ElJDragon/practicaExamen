@@ -355,6 +355,8 @@ var preguntas = [
 var preguntas_restantes = []
 var pregunta_actual = {}
 var puntaje = 0
+var total_preguntas = 5
+var preguntas_respondidas = 0
 
 func _ready():
 	# Selecciona 5 preguntas aleatorias sin repetir
@@ -367,7 +369,39 @@ func _ready():
 		preguntas_restantes.append(pregunta)
 		preguntas_copia.erase(pregunta)
 	puntaje = 0
+	preguntas_respondidas = 0
+	actualizar_marcador()
 	mostrar_pregunta_aleatoria()
+
+func actualizar_marcador():
+	# Crear o actualizar el marcador
+	var marcador_text = "Pregunta %d de %d | Correctas: %d" % [preguntas_respondidas + 1, total_preguntas, puntaje]
+	
+	# Buscar si ya existe un nodo Marcador, si no, crearlo
+	var marcador_node = get_node_or_null("Marcador")
+	if not marcador_node:
+		marcador_node = Label.new()
+		marcador_node.name = "Marcador"
+		add_child(marcador_node)
+		# Configurar el estilo del marcador
+		marcador_node.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		marcador_node.position = Vector2(10, 10)
+		marcador_node.size = Vector2(400, 30)
+		
+		# Crear un fondo para el marcador
+		var style_box = StyleBoxFlat.new()
+		style_box.bg_color = Color(0, 0, 0, 0.7)  # Fondo negro semi-transparente
+		style_box.corner_radius_top_left = 10
+		style_box.corner_radius_top_right = 10
+		style_box.corner_radius_bottom_left = 10
+		style_box.corner_radius_bottom_right = 10
+		
+		# Aplicar el estilo
+		marcador_node.add_theme_stylebox_override("normal", style_box)
+		marcador_node.add_theme_color_override("font_color", Color.WHITE)
+		marcador_node.z_index = 100  # Asegurar que esté al frente
+	
+	marcador_node.text = marcador_text
 
 func mostrar_pregunta_aleatoria():
 	if preguntas_restantes.size() == 0:
@@ -384,27 +418,65 @@ func mostrar_pregunta_aleatoria():
 func verificar_respuesta(indice):
 	for i in range(4):
 		get_node("Boton%d" % i).disabled = true
+	
+	preguntas_respondidas += 1
+	
 	if indice == pregunta_actual["correcta"]:
 		puntaje += 1
 		$Mensaje.text = "¡Correcto!"
 	else:
 		$Mensaje.text = "Incorrecto"
+	
+	# Actualizar marcador después de responder
+	actualizar_marcador()
+	
 	await get_tree().create_timer(1.2).timeout
 	mostrar_pregunta_aleatoria()
 
 func mostrar_resultado():
-	$Label.text = "¡Trivia terminada!\nRespuestas correctas: %d de %d" % [puntaje, 5]
+	var porcentaje = (float(puntaje) / float(total_preguntas)) * 100
+	var mensaje_evaluacion = ""
+	
+	if porcentaje >= 80:
+		mensaje_evaluacion = "¡Excelente trabajo!"
+	elif porcentaje >= 60:
+		mensaje_evaluacion = "¡Bien hecho!"
+	elif porcentaje >= 40:
+		mensaje_evaluacion = "Puedes mejorar"
+	else:
+		mensaje_evaluacion = "Necesitas estudiar más"
+	
+	$Label.text = "¡Trivia terminada!\n" + mensaje_evaluacion + "\nRespuestas correctas: %d de %d\nPorcentaje: %d%%" % [puntaje, total_preguntas, int(porcentaje)]
+	
+	# Actualizar marcador final
+	var marcador_node = get_node_or_null("Marcador")
+	if marcador_node:
+		marcador_node.text = "¡Trivia Completada! | Resultado: %d/%d (%d%%)" % [puntaje, total_preguntas, int(porcentaje)]
+		# Cambiar color del marcador según el resultado
+		if porcentaje >= 80:
+			marcador_node.add_theme_color_override("font_color", Color.GREEN)
+		elif porcentaje >= 60:
+			marcador_node.add_theme_color_override("font_color", Color.YELLOW)
+		else:
+			marcador_node.add_theme_color_override("font_color", Color.RED)
+	
 	for i in range(4):
 		get_node("Boton%d" % i).hide()
 	$Mensaje.text = ""
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	get_tree().change_scene_to_file("res://mundo.tscn")
 
+func reproducir_sonido_click():
+	get_node("AudioClick").play()
 func _on_boton_0_pressed() -> void:
+	reproducir_sonido_click()
 	verificar_respuesta(0)
 func _on_boton_1_pressed() -> void:
+	reproducir_sonido_click()
 	verificar_respuesta(1)
 func _on_boton_2_pressed() -> void:
+	reproducir_sonido_click()
 	verificar_respuesta(2)
 func _on_boton_3_pressed() -> void:
+	reproducir_sonido_click()
 	verificar_respuesta(3)
