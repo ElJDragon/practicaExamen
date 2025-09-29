@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpin6hrodk3x0"]
+[gd_scene load_steps=4 format=3 uid="uid://bpin6hrodk3x0"]
 
 [ext_resource type="Script" uid="uid://tg6xqcfj5i48" path="res://trivia.gd" id="1_m543f"]
+[ext_resource type="AudioStream" uid="uid://dybpy5nk8qjla" path="res://assets/trivia_song.ogg" id="2_n08wf"]
+[ext_resource type="AudioStream" uid="uid://hm0t8heqj7w2" path="res://assets/Sk1.mp3" id="3_muwiu"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -62,6 +64,15 @@ offset_left = 185.0
 offset_top = 474.0
 offset_right = 643.0
 offset_bottom = 531.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_n08wf")
+autoplay = true
+parameters/looping = true
+
+[node name="AudioClick" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_muwiu")
+volume_db = 15.837
 
 [connection signal="pressed" from="Boton0" to="." method="_on_boton_0_pressed"]
 [connection signal="pressed" from="Boton1" to="." method="_on_boton_1_pressed"]

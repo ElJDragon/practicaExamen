@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brwq5ayue63bn"
-path="res://.godot/imported/caballero.png-83a2d54e13c1968f5f947a79841ccea6.ctex"
+uid="uid://bqnjcrftkcfnk"
+path="res://.godot/imported/AgoraBetapxo.png-942484628bb61346c39e54dd236bc426.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/caballero.png"
-dest_files=["res://.godot/imported/caballero.png-83a2d54e13c1968f5f947a79841ccea6.ctex"]
+source_file="res://assets/AgoraBetapxo.png"
+dest_files=["res://.godot/imported/AgoraBetapxo.png-942484628bb61346c39e54dd236bc426.ctex"]
 
 [params]
 
