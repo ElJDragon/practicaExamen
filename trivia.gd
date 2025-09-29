@@ -71,9 +71,11 @@ func _ready():
 	$Boton4.connect("pressed", Callable(self, "_on_Boton4_pressed"))
 
 
-
+func reproducir_sonido_click():
+	$AudioClick.play()
 func _on_Boton0_pressed():
 	print("hola")
+	reproducir_sonido_click()
 	if categoria_seleccionada == "":
 		print("hola")
 		iniciar_juego("cultura")
@@ -81,19 +83,23 @@ func _on_Boton0_pressed():
 		verificar_respuesta(0)
 
 func _on_Boton1_pressed():
+	reproducir_sonido_click()
 	if categoria_seleccionada == "":
 		iniciar_juego("ingenieria")
 	else:
 		verificar_respuesta(1)
 
 func _on_Boton2_pressed():
+	reproducir_sonido_click()
 	verificar_respuesta(2)
 
 func _on_Boton3_pressed():
+	reproducir_sonido_click()
 	verificar_respuesta(3)
 func _on_Boton4_pressed():
-	# Si quieres simplemente cerrar la ventana:
-	get_tree().quit()
+	reproducir_sonido_click()
+	# Regresar al mundo principal manteniendo la posición del mono
+	get_tree().change_scene_to_file("res://mundo.tscn")
 
 func iniciar_juego(categoria):
 	categoria_seleccionada = categoria
@@ -135,9 +141,27 @@ func verificar_respuesta(indice):
 	mostrar_pregunta_aleatoria()
 
 func mostrar_resultado():
-	$Label.text = "¡Trivia terminada!\nRespuestas correctas: %d de %d" % [puntaje, puntaje + preguntas_restantes.size()]
+	var total_preguntas = 20  # Total de preguntas disponibles por categoría
+	var porcentaje = (float(puntaje) / float(total_preguntas)) * 100
+	var mensaje_evaluacion = ""
+	
+	if porcentaje >= 80:
+		mensaje_evaluacion = "¡Excelente trabajo!"
+	elif porcentaje >= 60:
+		mensaje_evaluacion = "¡Bien hecho!"
+	elif porcentaje >= 40:
+		mensaje_evaluacion = "Puedes mejorar"
+	else:
+		mensaje_evaluacion = "Necesitas estudiar más"
+	
+	$Label.text = "¡Trivia terminada!\n" + mensaje_evaluacion + "\nRespuestas correctas: %d de %d\nPorcentaje: %d%%" % [puntaje, total_preguntas, int(porcentaje)]
+	
 	$Boton0.hide()
 	$Boton1.hide()
 	$Boton2.hide()
 	$Boton3.hide()
 	$Mensaje.text = ""
+	
+	# Esperar 3 segundos y luego regresar al mundo principal
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://mundo.tscn")
