@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpin6hrodk3x0"]
+[gd_scene load_steps=5 format=3 uid="uid://bpin6hrodk3x0"]
 
 [ext_resource type="Script" uid="uid://tg6xqcfj5i48" path="res://trivia.gd" id="1_m543f"]
 [ext_resource type="AudioStream" uid="uid://dybpy5nk8qjla" path="res://assets/trivia_song.ogg" id="2_n08wf"]
+[ext_resource type="Texture2D" uid="uid://fen2pocq8dyu" path="res://assets/escenario-luz-azul.png" id="2_p4vtr"]
 [ext_resource type="AudioStream" uid="uid://hm0t8heqj7w2" path="res://assets/Sk1.mp3" id="3_muwiu"]
 
 [node name="Control" type="Control"]
@@ -10,6 +11,14 @@ anchors_preset = 0
 offset_right = 846.0
 offset_bottom = 648.0
 script = ExtResource("1_m543f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 839.0
+offset_bottom = 641.0
+texture = ExtResource("2_p4vtr")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1

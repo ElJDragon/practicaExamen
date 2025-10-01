@@ -239,6 +239,8 @@ func mostrar_resultado():
 	else:
 		mensaje_evaluacion = "📚 Necesitas estudiar más"
 	$Label.text = "🎉 ¡Trivia terminada!\n%s\nRespuestas correctas: %d de %d\nPorcentaje: %d%%\n🏆 Mejor puntaje: %d" % [mensaje_evaluacion, puntaje, total_preguntas, int(porcentaje), puntaje_maximo]
+	$Boton0.hide()
+	$Boton1.hide()
 	$Boton2.hide()
 	$Boton3.hide()
 	$Boton4.show()
