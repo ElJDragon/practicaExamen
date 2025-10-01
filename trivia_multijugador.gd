@@ -1,0 +1,35 @@
+extends Control
+
+# Menú multijugador: elegir ser anfitrión o unirse a sala
+func _ready():
+	$Label.text = "Multijugador: Elige una opción"
+	$Boton0.text = "Ser anfitrión"
+	$Boton1.text = "Unirse a sala"
+	$Boton2.hide()
+	$Boton3.hide()
+	$Mensaje.text = ""
+	$Boton4.text = "Volver"
+
+	$Boton0.connect("pressed", Callable(self, "_on_Boton0_pressed"))
+	$Boton1.connect("pressed", Callable(self, "_on_Boton1_pressed"))
+	$Boton4.connect("pressed", Callable(self, "_on_Boton4_pressed"))
+
+func reproducir_sonido_click():
+	$AudioClick.play()
+
+func _on_Boton0_pressed():
+	reproducir_sonido_click()
+	# Ir a la escena de anfitrión
+	#get_tree().change_scene_to_file("res://trivia_host.tscn")
+	$Mensaje.text = "Multijugador en desarrollo"
+
+func _on_Boton1_pressed():
+	reproducir_sonido_click()
+	# Ir a la escena de cliente
+	#get_tree().change_scene_to_file("res://trivia_cliente.tscn")
+	$Mensaje.text = "Multijugador en desarrollo"
+
+func _on_Boton4_pressed():
+	reproducir_sonido_click()
+	get_tree().change_scene_to_file("res://trivia.tscn")
+	

@@ -158,7 +158,7 @@ func play_video_cutscene():
 	video_player.expand = true
 	video_player.visible = true
 
-	var video_path = "res://cinematicas/mago_cinematic.ogv"
+	var video_path = "res://cinematicas/mago_cinematics.ogv"
 	var video_stream = load(video_path)
 	if video_stream == null:
 		print("❌ No se pudo cargar el video")

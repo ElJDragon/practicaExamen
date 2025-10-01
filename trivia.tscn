@@ -15,55 +15,40 @@ script = ExtResource("1_m543f")
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 42.0
+offset_left = 163.0
+offset_top = 131.0
+offset_right = -136.0
+offset_bottom = 290.0
 grow_horizontal = 2
 
 [node name="Boton0" type="Button" parent="."]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 524.0
-offset_right = 179.0
-offset_bottom = 629.0
+offset_left = 242.0
+offset_top = 318.0
+offset_right = 383.0
+offset_bottom = 423.0
 autowrap_mode = 2
 
 [node name="Boton1" type="Button" parent="."]
 layout_mode = 0
-offset_left = 245.0
-offset_top = 523.0
-offset_right = 386.0
-offset_bottom = 627.0
-autowrap_mode = 2
-
-[node name="Boton2" type="Button" parent="."]
-layout_mode = 0
-offset_left = 452.0
-offset_top = 520.0
-offset_right = 593.0
-offset_bottom = 625.0
-autowrap_mode = 2
-
-[node name="Boton3" type="Button" parent="."]
-layout_mode = 0
-offset_left = 653.0
-offset_top = 521.0
-offset_right = 794.0
-offset_bottom = 623.0
+offset_left = 495.0
+offset_top = 315.0
+offset_right = 636.0
+offset_bottom = 419.0
 autowrap_mode = 2
 
 [node name="Boton4" type="Button" parent="."]
-layout_mode = 0
-offset_left = 653.0
-offset_top = 521.0
-offset_right = 794.0
-offset_bottom = 623.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.059
+anchor_top = 0.032
+anchor_right = 0.059
+anchor_bottom = 0.032
+offset_left = 632.086
+offset_top = 0.264
+offset_right = 773.086
+offset_bottom = 102.264
 autowrap_mode = 2
-
-[node name="Mensaje" type="Label" parent="."]
-layout_mode = 0
-offset_left = 185.0
-offset_top = 474.0
-offset_right = 643.0
-offset_bottom = 531.0
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_n08wf")
@@ -76,6 +61,4 @@ volume_db = 15.837
 
 [connection signal="pressed" from="Boton0" to="." method="_on_boton_0_pressed"]
 [connection signal="pressed" from="Boton1" to="." method="_on_boton_1_pressed"]
-[connection signal="pressed" from="Boton2" to="." method="_on_boton_2_pressed"]
-[connection signal="pressed" from="Boton3" to="." method="_on_boton_3_pressed"]
 [connection signal="pressed" from="Boton4" to="." method="_on_boton_3_pressed"]

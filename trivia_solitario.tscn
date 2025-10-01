@@ -1,0 +1,68 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnpgytgqfajrs"]
+
+[ext_resource type="Script" uid="uid://dexodb4rs5h2n" path="res://trivia_solitario.gd" id="1_mxdw0"]
+
+[node name="TriviaSolitario" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mxdw0")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 183.0
+offset_top = 83.0
+offset_right = 629.0
+offset_bottom = 230.0
+
+[node name="Boton0" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 0.006
+offset_left = 146.0
+offset_top = 377.0
+offset_right = 324.0
+offset_bottom = 464.112
+
+[node name="Boton1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 452.0
+offset_top = 366.0
+offset_right = 632.0
+offset_bottom = 463.0
+
+[node name="Boton2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 496.0
+offset_right = 329.0
+offset_bottom = 587.0
+
+[node name="Boton3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 500.0
+offset_right = 637.0
+offset_bottom = 582.0
+
+[node name="Boton4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 35.0
+offset_right = 817.0
+offset_bottom = 83.0
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+
+[node name="Mensaje" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.173
+anchor_bottom = 0.213
+offset_left = 279.0
+offset_top = 283.0
+offset_right = 365.642
+offset_bottom = 202.976

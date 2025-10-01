@@ -40,6 +40,7 @@ func _on_btn_iniciar_pressed() -> void:
 	# Detener la animación existente
 	if tween_btn_iniciar:
 		tween_btn_iniciar.kill()
+		print('click')
 	
 	# Efecto de clic (pequeño movimiento hacia abajo)
 	var tween_click = create_tween()
