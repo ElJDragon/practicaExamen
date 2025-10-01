@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://dj2kui31660ff" path="res://assets/Monkey.png" id="1_5erk5"]
 [ext_resource type="Script" uid="uid://b5iwo8rm2igjm" path="res://mono.gd" id="1_trhd0"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_trhd0"]
-radius = 3.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trhd0"]
+radius = 24.0
+height = 64.0
 
 [sub_resource type="Animation" id="Animation_mswvo"]
 length = 0.001
@@ -52,8 +53,7 @@ scale = Vector2(5, 5)
 texture = ExtResource("1_5erk5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_trhd0")
+shape = SubResource("CapsuleShape2D_trhd0")
 
 [node name="animaciones" type="AnimationPlayer" parent="."]
 libraries = {
@@ -61,3 +61,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 1440
