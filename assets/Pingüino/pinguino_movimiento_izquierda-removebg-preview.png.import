@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqnjcrftkcfnk"
-path="res://.godot/imported/AgoraBetapxo.png-942484628bb61346c39e54dd236bc426.ctex"
+uid="uid://dqwo2vba34hfn"
+path="res://.godot/imported/pinguino_movimiento_izquierda-removebg-preview.png-cdddb336ea29cb2f7fecbd97f9f86dfc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/AgoraBetapxo.png"
-dest_files=["res://.godot/imported/AgoraBetapxo.png-942484628bb61346c39e54dd236bc426.ctex"]
+source_file="res://assets/Pingüino/pinguino_movimiento_izquierda-removebg-preview.png"
+dest_files=["res://.godot/imported/pinguino_movimiento_izquierda-removebg-preview.png-cdddb336ea29cb2f7fecbd97f9f86dfc.ctex"]
 
 [params]
 
