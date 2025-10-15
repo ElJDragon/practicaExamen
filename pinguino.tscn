@@ -394,8 +394,7 @@ animations = [{
 }]
 
 [sub_resource type="GDScript" id="GDScript_tjs8u"]
-script/source = "extends AnimatedSprite2D
-"
+script/source = "extends AnimatedSprite2D\n"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jq4lr"]
 radius = 24.0

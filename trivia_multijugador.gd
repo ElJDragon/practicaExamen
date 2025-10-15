@@ -20,14 +20,20 @@ func reproducir_sonido_click():
 func _on_Boton0_pressed():
 	reproducir_sonido_click()
 	# Ir a la escena de anfitrión
-	#get_tree().change_scene_to_file("res://trivia_host.tscn")
-	$Mensaje.text = "Multijugador en desarrollo"
+	var path = "res://trivia_host.tscn"
+	if ResourceLoader.exists(path):
+		get_tree().change_scene_to_file(path)
+	else:
+		$Mensaje.text = "Escena de host no encontrada: %s" % path
 
 func _on_Boton1_pressed():
 	reproducir_sonido_click()
 	# Ir a la escena de cliente
-	#get_tree().change_scene_to_file("res://trivia_cliente.tscn")
-	$Mensaje.text = "Multijugador en desarrollo"
+	var path = "res://trivia_client.tscn"
+	if ResourceLoader.exists(path):
+		get_tree().change_scene_to_file(path)
+	else:
+		$Mensaje.text = "Escena de cliente no encontrada: %s" % path
 
 func _on_Boton4_pressed():
 	reproducir_sonido_click()
