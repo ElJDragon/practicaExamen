@@ -270,7 +270,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 14.0
+"speed": 17.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -302,7 +302,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_left",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -334,7 +334,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 9.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -390,7 +390,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_up",
-"speed": 13.0
+"speed": 17.0
 }]
 
 [sub_resource type="GDScript" id="GDScript_tjs8u"]
@@ -411,8 +411,7 @@ script = ExtResource("1_omcub")
 position = Vector2(192, 264)
 scale = Vector2(1.37766, 1.58333)
 sprite_frames = SubResource("SpriteFrames_qi0h6")
-animation = &"walk_up"
-frame_progress = 0.914147
+animation = &"walk_down"
 script = SubResource("GDScript_tjs8u")
 metadata/_edit_group_ = true
 

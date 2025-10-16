@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://gut1e6vhxams"]
 
-[ext_resource type="Texture2D" uid="uid://dj2kui31660ff" path="res://assets/Monkey.png" id="1_5erk5"]
 [ext_resource type="Script" uid="uid://b5iwo8rm2igjm" path="res://mono.gd" id="1_trhd0"]
+[ext_resource type="Texture2D" uid="uid://dd3hq00xlsku7" path="res://assets/Personaje2.png" id="2_trhd0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_trhd0"]
 radius = 24.0
@@ -50,7 +50,7 @@ script = ExtResource("1_trhd0")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = -0.0872665
 scale = Vector2(5, 5)
-texture = ExtResource("1_5erk5")
+texture = ExtResource("2_trhd0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_trhd0")
