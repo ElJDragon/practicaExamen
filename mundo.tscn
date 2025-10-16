@@ -19,6 +19,7 @@ position = Vector2(878, 732)
 position = Vector2(4, 690)
 
 [node name="Pinguino" parent="." instance=ExtResource("6_t8jxu")]
+position = Vector2(392, 432)
 
 [node name="PjPricipal" parent="." instance=ExtResource("5_2hh7m")]
 position = Vector2(656, 1264)

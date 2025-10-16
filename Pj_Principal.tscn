@@ -194,7 +194,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 9.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -319,8 +319,8 @@ limit_bottom = 1440
 
 [node name="Animacion_PJ_Principal" type="AnimatedSprite2D" parent="PJ_Principal"]
 sprite_frames = SubResource("SpriteFrames_ypp8c")
-animation = &"walk_up"
-frame_progress = 0.6001
+animation = &"walk_down"
+frame_progress = 0.0469616
 
 [node name="Collision_PJ_Principal" type="CollisionShape2D" parent="PJ_Principal"]
 position = Vector2(0, 4)

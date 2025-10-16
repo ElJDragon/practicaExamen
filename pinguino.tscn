@@ -397,9 +397,8 @@ animations = [{
 script/source = "extends AnimatedSprite2D
 "
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jq4lr"]
-radius = 24.0
-height = 64.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_omcub"]
+size = Vector2(56, 64)
 
 [node name="Pinguino" type="Node2D"]
 
@@ -416,5 +415,5 @@ script = SubResource("GDScript_tjs8u")
 metadata/_edit_group_ = true
 
 [node name="Colision_Pinguino" type="CollisionShape2D" parent="Bot_Pinguino"]
-position = Vector2(192, 264)
-shape = SubResource("CapsuleShape2D_jq4lr")
+position = Vector2(196, 264)
+shape = SubResource("RectangleShape2D_omcub")
