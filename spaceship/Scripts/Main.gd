@@ -85,8 +85,8 @@ func setup_game():
 	print("Creating player...")
 	player = player_scene.instantiate()
 	
-	# POSICIÓN CORRECTA: CENTRADO EN LA PARTE INFERIOR
-	player.position = Vector2(512, 550)  # Centro X, parte inferior Y
+	# POSICIÓN CORRECTA: CENTRADO EN LA PARTE INFERIOR (ventana 846px)
+	player.position = Vector2(423, 550)  # Centro X (846/2), parte inferior Y
 	player.z_index = 10  # Jugador en capa intermedia
 	add_child(player)
 	
@@ -331,11 +331,11 @@ func move_enemies(delta):
 		var move_amount = enemy_direction * enemy_move_distance
 		var moved_count = 0  # Declarar la variable aquí
 		
-		# Verificar límites
+		# Verificar límites (ventana real: 846px de ancho)
 		var will_hit_edge = false
 		for enemy in enemies:
 			var next_x = enemy.position.x + move_amount
-			if next_x < 50 or next_x > 970:
+			if next_x < 30 or next_x > 816:  # Ajustado para ventana de 846px
 				will_hit_edge = true
 				break
 		
@@ -459,8 +459,15 @@ func _on_player_hit():
 	
 	lives_changed.emit(lives)
 	
+	# Actualizar el estado visual del jugador según las vidas restantes
+	if player and player.has_method("update_damage_visual"):
+		player.update_damage_visual(lives)
+	
 	if lives <= 0:
 		print("All lives lost!")
+		# Deshabilitar controles del jugador
+		if player and player.has_method("disable_controls"):
+			player.disable_controls()
 		end_game()
 	else:
 		print("Lives left: ", lives)
@@ -533,6 +540,11 @@ func restart_game():
 	
 	print("Starting new game...")
 	await setup_game()
+	
+	# Habilitar controles del jugador al reiniciar
+	if player and player.has_method("enable_controls"):
+		player.enable_controls()
+	
 	print("=== GAME RESTARTED ===")
 
 func find_players_in_node(node: Node, player_list: Array):

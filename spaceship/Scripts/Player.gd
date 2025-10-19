@@ -9,11 +9,18 @@ var speed: float = 300.0
 var bullet_scene = preload("res://spaceship/scenes/Bullet.tscn")
 var can_shoot: bool = true
 var shoot_cooldown: float = 0.3
+var can_move: bool = true  # Control de movimiento (bloqueado al perder)
+var current_lives: int = 3  # Vidas actuales para controlar el estado visual
 
 # Referencias a nodos (almacenadas)
 var sprite_node: Sprite2D
 var collision_node: CollisionShape2D
 var shoot_timer: Timer
+
+# Nodos visuales de daño
+var left_wing: ColorRect
+var right_wing: ColorRect
+var damage_effects: Node2D  # Contenedor para efectos de daño
 
 func _ready():
 	print("Player _ready() started")
@@ -83,7 +90,40 @@ func _ready():
 	else:
 		print("ERROR: self is not an Area2D! Type: ", self.get_class())
 	
+	# Crear elementos visuales de daño
+	create_damage_visuals()
+	
 	print("Player initialized successfully at position: ", position)
+
+func create_damage_visuals():
+	"""Crear elementos visuales de las alas y efectos de daño"""
+	print("Creating damage visual elements...")
+	
+	# Crear contenedor para efectos de daño
+	damage_effects = Node2D.new()
+	damage_effects.name = "DamageEffects"
+	damage_effects.z_index = -1  # Detrás del sprite principal
+	add_child(damage_effects)
+	
+	# Crear ala izquierda
+	left_wing = ColorRect.new()
+	left_wing.name = "LeftWing"
+	left_wing.size = Vector2(15, 8)
+	left_wing.position = Vector2(-20, -4)  # Posición relativa al centro de la nave
+	left_wing.color = Color(0.4, 0.6, 0.8, 1.0)  # Azul metálico
+	left_wing.z_index = -1
+	damage_effects.add_child(left_wing)
+	
+	# Crear ala derecha
+	right_wing = ColorRect.new()
+	right_wing.name = "RightWing"
+	right_wing.size = Vector2(15, 8)
+	right_wing.position = Vector2(5, -4)  # Posición relativa al centro de la nave
+	right_wing.color = Color(0.4, 0.6, 0.8, 1.0)  # Azul metálico
+	right_wing.z_index = -1
+	damage_effects.add_child(right_wing)
+	
+	print("✅ Damage visuals created: wings ready")
 
 func setup_player_dimensions():
 	"""Configurar dimensiones correctas del jugador"""
@@ -140,8 +180,10 @@ func setup_player_sprite():
 # Función removida - ya no necesaria, usamos solo la textura de la escena
 
 func _process(delta):
-	handle_movement(delta)
-	handle_shooting()
+	# Solo procesar si el jugador puede moverse (no está muerto)
+	if can_move:
+		handle_movement(delta)
+		handle_shooting()
 
 func handle_movement(delta):
 	var velocity = Vector2.ZERO
@@ -154,8 +196,8 @@ func handle_movement(delta):
 	velocity = velocity.normalized() * speed
 	var new_position = position + velocity * delta
 	
-	# LÍMITES AJUSTADOS PARA LA ESCALA MÁS PEQUEÑA
-	var screen_width = 1024.0
+	# LÍMITES AJUSTADOS PARA LA VENTANA REAL (846px de ancho)
+	var screen_width = 846.0  # Ancho real de la ventana según project.godot
 	var sprite_half_width = 17.5  # Ajustado para escala 0.3 (35/2)
 	
 	var left_limit = sprite_half_width
@@ -163,10 +205,10 @@ func handle_movement(delta):
 	
 	new_position.x = clamp(new_position.x, left_limit, right_limit)
 	
-	# Debug para verificar el centrado
-	if velocity.x != 0:
-		var center_distance = abs(new_position.x - 512.0)  # Distancia al centro
-		print("Position: ", new_position.x, " | Distance from center: ", center_distance)
+	# Debug para verificar el centrado (opcional, comentado para reducir spam)
+	#if velocity.x != 0:
+	#	var center_distance = abs(new_position.x - 423.0)  # Distancia al centro (846/2)
+	#	print("Position: ", new_position.x, " | Distance from center: ", center_distance)
 	
 	position = new_position
 
@@ -188,7 +230,59 @@ func _on_shoot_timer_timeout():
 	can_shoot = true
 
 func _on_area_entered(area):
-	if area.is_in_group("enemy_bullets"):
+	# Solo procesar colisiones si el jugador puede moverse
+	if can_move and area.is_in_group("enemy_bullets"):
 		area.queue_free()
 		emit_signal("player_hit")
 		print("Player hit!")
+
+func update_damage_visual(lives: int):
+	"""Actualizar el estado visual de la nave según las vidas restantes"""
+	current_lives = lives
+	print("🔧 Updating ship visual for ", lives, " lives remaining")
+	
+	if not left_wing or not right_wing or not sprite_node:
+		print("⚠️ Warning: Visual elements not ready")
+		return
+	
+	match lives:
+		3:  # Nave intacta
+			left_wing.visible = true
+			right_wing.visible = true
+			sprite_node.modulate = Color(1.0, 1.0, 1.0, 1.0)  # Color normal
+			print("✈️ Ship intact - all wings visible")
+			
+		2:  # Pierde ala derecha
+			left_wing.visible = true
+			right_wing.visible = false
+			sprite_node.modulate = Color(1.0, 0.9, 0.8, 1.0)  # Ligeramente dañado
+			print("💥 Right wing destroyed!")
+			
+		1:  # Pierde ala izquierda también
+			left_wing.visible = false
+			right_wing.visible = false
+			sprite_node.modulate = Color(1.0, 0.7, 0.5, 1.0)  # Más dañado
+			print("💥💥 Both wings destroyed!")
+			
+		0:  # Nave severamente dañada
+			left_wing.visible = false
+			right_wing.visible = false
+			sprite_node.modulate = Color(0.8, 0.3, 0.1, 1.0)  # Rojo/naranja fuego
+			print("💀 Ship critically damaged!")
+			
+		_:
+			print("⚠️ Unknown lives value: ", lives)
+
+# Función para deshabilitar movimiento (llamada cuando se pierde)
+func disable_controls():
+	can_move = false
+	can_shoot = false
+	print("⛔ Player controls disabled - Game Over")
+
+# Función para habilitar movimiento (llamada al reiniciar)
+func enable_controls():
+	can_move = true
+	can_shoot = true
+	current_lives = 3
+	update_damage_visual(3)  # Restaurar nave intacta
+	print("✅ Player controls enabled")

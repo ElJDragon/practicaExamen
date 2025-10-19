@@ -9,10 +9,10 @@ func _ready():
 	title_label.text = "SPACE INVADERS"
 	title_label.position = Vector2(400, 200)
 	
-	start_button.text = "START GAME"
+	start_button.text = "INICIAR"
 	start_button.position = Vector2(450, 300)
 	
-	instructions_label.text = "Use A/D or Arrow Keys to move\nSpace to shoot\nR to restart"
+	instructions_label.text = "Usa A/D o las Flechas para moverte\nEspacio para disparar\nR para reiniciar"
 	instructions_label.position = Vector2(400, 400)
 
 func _on_start_button_pressed():
