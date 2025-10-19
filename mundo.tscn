@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://m6gqbdchwjhb"]
+[gd_scene load_steps=9 format=3 uid="uid://m6gqbdchwjhb"]
 
 [ext_resource type="PackedScene" uid="uid://cskbmrl81cm1v" path="res://mago.tscn" id="4_otwa2"]
 [ext_resource type="PackedScene" uid="uid://cxreb1g11a6iy" path="res://Pj_Principal.tscn" id="5_2hh7m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bqnjcrftkcfnk" path="res://assets/AgoraBetapxo.png" id="6_5ckkb"]
 [ext_resource type="PackedScene" uid="uid://bjdjjphcf2dg8" path="res://pinguino.tscn" id="6_t8jxu"]
 [ext_resource type="AudioStream" uid="uid://dfqj22lthf7ev" path="res://assets/Intro.ogg" id="7_2hh7m"]
+[ext_resource type="PackedScene" uid="uid://bq8xk3l5m6n7o" path="res://astronauta.tscn" id="7_astronauta"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_57gmc"]
 
@@ -13,13 +14,16 @@
 y_sort_enabled = true
 
 [node name="Mago" parent="." instance=ExtResource("4_otwa2")]
-position = Vector2(878, 732)
+position = Vector2(1045.0001, 892)
 
 [node name="Caballero" parent="." instance=ExtResource("5_aou4a")]
-position = Vector2(4, 690)
+position = Vector2(215, 901)
 
 [node name="Pinguino" parent="." instance=ExtResource("6_t8jxu")]
 position = Vector2(392, 432)
+
+[node name="Astronauta" parent="." instance=ExtResource("7_astronauta")]
+position = Vector2(886, 539)
 
 [node name="PjPricipal" parent="." instance=ExtResource("5_2hh7m")]
 position = Vector2(656, 1264)

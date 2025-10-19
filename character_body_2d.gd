@@ -4,8 +4,15 @@ extends CharacterBody2D
 @onready var animated_sprite = $Animacion_PJ_Principal
 
 var last_direction := "down"  # Para recordar la última dirección
+var can_move := true  # Control de movimiento
 
 func _ready():
+	# Restaurar posición guardada si existe
+	if Global.posicion_mono != Vector2.ZERO:
+		print("Restaurando posición del jugador:", Global.posicion_mono)
+		global_position = Global.posicion_mono
+		# NO resetear la posición - mantenerla para futuras interacciones
+	
 	if animated_sprite:
 		print("AnimatedSprite2D encontrado!")
 		for anim in animated_sprite.sprite_frames.get_animation_names():
@@ -16,6 +23,12 @@ func _ready():
 		print("AnimatedSprite2D NO encontrado!")
 
 func _physics_process(delta):
+	# Verificar si el jugador puede moverse
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	
 	if input_dir.length() > 0:
@@ -61,3 +74,13 @@ func play_animation(anim_name: String):
 			animated_sprite.play()
 	else:
 		print("Animación no encontrada: ", anim_name)
+
+# Funciones para controlar el movimiento (usadas por NPCs durante cinemáticas)
+func disable_movement():
+	can_move = false
+	velocity = Vector2.ZERO
+	print("Movimiento del jugador desactivado")
+
+func enable_movement():
+	can_move = true
+	print("Movimiento del jugador activado")
