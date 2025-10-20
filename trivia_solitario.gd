@@ -143,37 +143,32 @@ func _ready():
 			puntaje_maximo = load.get_32()
 		load.close()
 
-func reproducir_sonido_click():
-	$AudioClick.play()
-
+func reproducir_audio_correct():
+	$CorrectAudio.play()
+func reproducir_audio_error():
+	$ErrorAudio.play()
 func _on_Boton0_pressed():
-	reproducir_sonido_click()
 	if categoria_seleccionada == "":
 		iniciar_juego("cultura")
 	else:
 		verificar_respuesta(0)
 
 func _on_Boton1_pressed():
-	reproducir_sonido_click()
 	if categoria_seleccionada == "":
 		iniciar_juego("ingenieria")
 	else:
 		verificar_respuesta(1)
 
 func _on_Boton2_pressed():
-	reproducir_sonido_click()
 	verificar_respuesta(2)
 
 func _on_Boton3_pressed():
-	reproducir_sonido_click()
 	verificar_respuesta(3)
 
 func _on_Boton4_pressed():
-	reproducir_sonido_click()
 	get_tree().change_scene_to_file("res://trivia.tscn")
 
 func _on_Boton5_pressed():
-	reproducir_sonido_click()
 	get_tree().reload_current_scene()
 
 func iniciar_juego(categoria):
@@ -215,8 +210,10 @@ func verificar_respuesta(indice):
 	if indice == pregunta_actual["correcta"]:
 		puntaje += 1
 		$Mensaje.text = "✅ ¡Correcto!"
+		reproducir_audio_correct()
 	else:
 		$Mensaje.text = "❌ Incorrecto"
+		reproducir_audio_error()
 	await get_tree().create_timer(1.2).timeout
 	mostrar_pregunta_aleatoria()
 

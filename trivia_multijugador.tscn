@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bsqtwbvsjbp1c"]
+[gd_scene load_steps=3 format=3 uid="uid://bsqtwbvsjbp1c"]
 
 [ext_resource type="Script" uid="uid://d38xamyysp0pl" path="res://trivia_multijugador.gd" id="1_gq3y2"]
+[ext_resource type="AudioStream" uid="uid://hm0t8heqj7w2" path="res://assets/Sk1.mp3" id="2_s763d"]
 
 [node name="TriviaMultijugador" type="Control"]
 layout_mode = 3
@@ -61,3 +62,4 @@ offset_right = 618.0
 offset_bottom = 217.0
 
 [node name="AudioClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s763d")
