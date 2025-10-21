@@ -303,7 +303,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l2aui"]
-size = Vector2(64, 120)
+size = Vector2(32, 72)
 
 [node name="PjPricipal" type="Node2D"]
 
@@ -318,10 +318,12 @@ limit_right = 1280
 limit_bottom = 1440
 
 [node name="Animacion_PJ_Principal" type="AnimatedSprite2D" parent="PJ_Principal"]
+position = Vector2(-15.5, -19.5)
+scale = Vector2(0.602564, 0.690476)
 sprite_frames = SubResource("SpriteFrames_ypp8c")
 animation = &"walk_down"
 frame_progress = 0.0469616
 
 [node name="Collision_PJ_Principal" type="CollisionShape2D" parent="PJ_Principal"]
-position = Vector2(0, 4)
+position = Vector2(-16, -20)
 shape = SubResource("RectangleShape2D_l2aui")

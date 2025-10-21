@@ -14,7 +14,7 @@
 y_sort_enabled = true
 
 [node name="Mago" parent="." instance=ExtResource("4_otwa2")]
-position = Vector2(1045.0001, 892)
+position = Vector2(1045, 892)
 
 [node name="Caballero" parent="." instance=ExtResource("5_aou4a")]
 position = Vector2(215, 901)
