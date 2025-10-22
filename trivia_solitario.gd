@@ -207,15 +207,38 @@ func mostrar_pregunta_aleatoria():
 func verificar_respuesta(indice):
 	for i in range(4):
 		get_node("Boton%d" % i).disabled = true
+
+	# Guardar colores originales usando modulate
+	var colores_originales = []
+	for i in range(4):
+		var boton = get_node("Boton%d" % i)
+		colores_originales.append(boton.modulate)
+
+	# Verificar respuesta
 	if indice == pregunta_actual["correcta"]:
 		puntaje += 1
 		$Mensaje.text = "✅ ¡Correcto!"
 		reproducir_audio_correct()
+		get_node("Boton%d" % indice).modulate = Color(0, 1, 0)  # Verde
 	else:
 		$Mensaje.text = "❌ Incorrecto"
 		reproducir_audio_error()
+		get_node("Boton%d" % indice).modulate = Color(1, 0, 0)  # Rojo
+		get_node("Boton%d" % pregunta_actual["correcta"]).modulate = Color(0, 1, 0)
+
 	await get_tree().create_timer(1.2).timeout
+
+	# Restaurar colores originales
+	for i in range(4):
+		var boton = get_node("Boton%d" % i)
+		boton.modulate = colores_originales[i]
+		boton.disabled = false
+
 	mostrar_pregunta_aleatoria()
+
+
+
+
 
 func mostrar_resultado():
 	if puntaje > puntaje_maximo:

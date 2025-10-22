@@ -5,7 +5,7 @@
  # Este script debe extender Control para usar la notación $ y get_tree()
 extends Control
 func _ready():
-	$Label.text = "Selecciona el modo de juego"
+	$Label.text = "Selecciona un modo de juego"
 	$Boton0.text = "Solitario"
 	$Boton1.text = "Multijugador"
 	$Boton4.text = "Salir"
