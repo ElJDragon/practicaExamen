@@ -11,19 +11,25 @@ config_version=5
 [application]
 
 config/name="JuegoTest"
-run/main_scene="uid://c1wonxbvgaebw"
-config/features=PackedStringArray("4.4", "GL Compatibility")
+run/main_scene="res://scenes/ui/login.tscn"
+config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Global="*res://Global.gd"
+AuthService="*res://scripts/autoload/AuthService.cs"
+Global="*res://scripts/autoload/Global.gd"
 HighScores="*res://spaceship/Scripts/HighScores.gd"
+GameServices="*res://scripts/core/game_services.gd"
 
 [display]
 
 window/size/viewport_width=846
 window/stretch/mode="canvas_items"
+
+[dotnet]
+
+project/assembly_name="JuegoTest"
 
 [input]
 

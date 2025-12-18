@@ -5,6 +5,7 @@ extends Node2D
 @onready var instructions_label: Label = $InstructionsLabel
 
 func _ready():
+	
 	# Configurar interfaz del menú
 	title_label.text = "SPACE INVADERS"
 	title_label.position = Vector2(400, 200)
